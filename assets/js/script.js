@@ -1,7 +1,7 @@
 // Global Variables
-let deck;
+let deck = createDeck();
 let card;
-let hidden;
+let hiddenCard;
 let playersTotal = 0;
 let dealersTotal = 0;
 let playersAceCount = 0;
@@ -39,11 +39,36 @@ function createDeck() {
   
 // Shuffle the deck  
 function shuffleDeck() {
-    let deck = createDeck();
+    // let deck = createDeck();
     for (let i = 0; i < deck.length; i++) {
       let j = Math.floor(Math.random() * deck.length);
       [deck[i], deck[j]] = [deck[j], deck[i]];
     }
     console.log(deck);
   }
-shuffleDeck();
+// shuffleDeck();
+
+function newGame() {
+    hiddenCard = deck.pop();
+    dealersTotal += getValue(hiddenCard);
+}
+
+// Calculate card values
+function getValue(card) {
+    let cardData = card.split("-");
+    let value = cardData[0];
+
+    if(isNaN(value)) {
+        if(value === "a") {
+            return 11;
+        }
+        else if(value === "j" || value === "q" || value === "k") {
+            return 10;
+        }
+        else {
+            return parseInt(value);
+        }
+    }
+}
+// newGame();
+// getValue();
