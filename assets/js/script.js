@@ -63,7 +63,7 @@ function getValue(card) {
 }
 // getValue(card);
 
-// Hit function to give another card to the player
+// Hit function to draw another card to the player
 function hit() {
     if(canHit) {
         let image = document.createElement("img");
@@ -81,6 +81,35 @@ function hit() {
     }
 }
 // hit();
+
+// Stand function to stop drawing cards and pass turn to the dealer
+function stand() {
+    canHit = false;
+    playersTotal = reduceAce(playersTotal, playersAceCount);
+    dealersTotal = reduceAce(dealersTotal, dealersAceCount);
+    document.getElementById("hidden-card").src = "assets/cards/" + hiddenCard + ".png";
+
+    // Determining the winner
+    let popup = "";
+    if(playersAceCount > 21) {
+        popup = "Ouch.. You Lose!"
+    } else if(dealersTotal > 21) {
+        popup = "Yay! You Win!"
+    } else if(playersTotal > dealersTotal) {
+        popup = "Yay! You Win!"
+    } else if(playersTotal === dealersTotal) {
+        popup = "It's a Tie!"
+    } else {
+        popup = "Ouch.. You Lose!"
+    }
+
+    // Display the players and dealers total score
+    document.getElementById("dealers-total").innerHTML = `Dealer  ${dealersTotal}`;
+    document.getElementById("players-total").innerHTML = `Player  ${playersTotal}`;
+
+    // Display the result on screen
+    document.getElementById("win-or-lose").innerHTML = popup;
+}
 
 // Function for players and dealers ace count 
 function checkForAce(card) {
@@ -110,6 +139,7 @@ function newGame() {
   dealersAceCount += checkForAce(hiddenCard);
   //   console.log(hiddenCard);
   //   console.log(dealersTotal);
+
   // Deal cards to the dealer
   while (dealersTotal < 17) {
     let image = document.createElement("img");
@@ -133,7 +163,9 @@ function newGame() {
   console.log(playersTotal);
 
   // Allow player to use the "HIT" button
-  document.getElementById("hit-button").addEventListener("click", hit)
+  document.getElementById("hit-button").addEventListener("click", hit);
+  // Allow player to use the "STAND" button
+  document.getElementById("stand-button").addEventListener("click", stand);
 }
 newGame();
 
