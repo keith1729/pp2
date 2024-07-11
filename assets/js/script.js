@@ -1,5 +1,4 @@
 // Global Variables
-
 let deck;
 let card;
 let hidden;
@@ -33,8 +32,18 @@ function createDeck() {
         deck.push(values[y] + "-" + suits[x]);
       }
     }
-    // return deck;
+    return deck;
+    // console.log(deck);
+  }
+//   createDeck();
+  
+// Shuffle the deck  
+function shuffleDeck() {
+    let deck = createDeck();
+    for (let i = 0; i < deck.length; i++) {
+      let j = Math.floor(Math.random() * deck.length);
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
     console.log(deck);
   }
-  createDeck();
-  
+shuffleDeck();
