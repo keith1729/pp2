@@ -98,8 +98,11 @@ function stand() {
       dealersAceCount += checkForAce(card);
   }
 
+  // Account for aces
   playersTotal = reduceAce(playersTotal, playersAceCount);
   dealersTotal = reduceAce(dealersTotal, dealersAceCount);
+  
+  // Flip the hidden card
   document.getElementById("hidden-card").src =
     "assets/cards/" + hiddenCard + ".png";
 
@@ -167,7 +170,7 @@ function newGame() {
       dealersTotal += getValue(card);
       dealersAceCount += checkForAce(card);
     }
-  console.log(dealersTotal);
+  // console.log(dealersTotal);
 
   // Deal cards to the player
   for (let x = 0; x < 2; x++) {
@@ -178,7 +181,11 @@ function newGame() {
     playersTotal += getValue(card);
     playersAceCount += checkForAce(card);
   }
-  console.log(playersTotal);
+  // console.log(playersTotal);
+
+  // Account for aces
+  playersTotal = reduceAce(playersTotal, playersAceCount);
+  dealersTotal = reduceAce(dealersTotal, dealersAceCount);
 
   // Allow player to use the "HIT" button
   document.getElementById("hit-button").addEventListener("click", hit);
