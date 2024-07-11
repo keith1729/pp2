@@ -1,6 +1,6 @@
 // Global Variables
 let deck = createDeck();
-let card;
+let card = "";
 let hiddenCard;
 let playersTotal = 0;
 let dealersTotal = 0;
@@ -10,65 +10,97 @@ let canHit = true;
 
 // Create deck of cards
 function createDeck() {
-    const suits = ["c", "d", "h", "s"]; // "clubs", "diamonds", "hearts", "spades"
-    const values = [
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "j",
-      "q",
-      "k",
-      "a",
-    ];
-    let deck = [];
-    for (let x = 0; x < suits.length; x++) {
-      for (let y = 0; y < values.length; y++) {
-        deck.push(values[y] + "-" + suits[x]);
-      }
+  const suits = ["c", "d", "h", "s"]; // "clubs", "diamonds", "hearts", "spades"
+  const values = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "j",
+    "q",
+    "k",
+    "a",
+  ];
+  let deck = [];
+  for (let x = 0; x < suits.length; x++) {
+    for (let y = 0; y < values.length; y++) {
+      deck.push(values[y] + "-" + suits[x]);
     }
-    return deck;
-    // console.log(deck);
   }
-//   createDeck();
-  
-// Shuffle the deck  
-function shuffleDeck() {
-    // let deck = createDeck();
-    for (let i = 0; i < deck.length; i++) {
-      let j = Math.floor(Math.random() * deck.length);
-      [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
-    console.log(deck);
-  }
-// shuffleDeck();
-
-function newGame() {
-    hiddenCard = deck.pop();
-    dealersTotal += getValue(hiddenCard);
+  return deck;
 }
+//   console.log(deck);
+
+// Shuffle the deck
+function shuffleDeck() {
+  for (let i = 0; i < deck.length; i++) {
+    let j = Math.floor(Math.random() * deck.length);
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+}
+// shuffleDeck();
+// console.log(deck);
 
 // Calculate card values
 function getValue(card) {
-    let cardData = card.split("-");
-    let value = cardData[0];
+  let cardData = card.split("-");
+  let value = cardData[0];
 
-    if(isNaN(value)) {
-        if(value === "a") {
-            return 11;
-        }
-        else if(value === "j" || value === "q" || value === "k") {
-            return 10;
-        }
-        else {
-            return parseInt(value);
-        }
+  if (isNaN(value)) {
+    if (value === "a") {
+      return 11;
+    } else if (value === "j" || value === "q" || value === "k") {
+      return 10;
     }
+  } else {
+    return parseInt(value);
+  }
 }
-// newGame();
-// getValue();
+// getValue(card);
+
+function checkForAce(card) {
+  if (card[0] === "a") {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+// checkForAce(card);
+
+// New Game
+function newGame() {
+  createDeck();
+  shuffleDeck();
+  hiddenCard = deck.pop();
+  dealersTotal += getValue(hiddenCard);
+  dealersAceCount += checkForAce(hiddenCard);
+  //   console.log(hiddenCard);
+  //   console.log(dealersTotal);
+  // Deal cards to the dealer
+  while (dealersTotal < 17) {
+    let image = document.createElement("img");
+    let card = deck.pop();
+    image.src = "assets/cards/" + card + ".png";
+    dealersTotal += getValue(card);
+    dealersAceCount += checkForAce(card);
+    document.getElementById("dealers-cards").append(image);
+  }
+  console.log(dealersTotal);
+  
+  // Deal cards to the player
+  for (let x = 0; x < 2; x++) {
+    let image = document.createElement("img");
+    let card = deck.pop();
+    image.src = "assets/cards/" + card + ".png";
+    playersTotal += getValue(card);
+    playersAceCount += checkForAce(card);
+    document.getElementById("players-cards").append(image);
+  }
+  console.log(playersTotal);
+}
+newGame();
