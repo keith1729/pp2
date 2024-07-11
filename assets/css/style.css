@@ -13,12 +13,13 @@ body {
 #heading {
     text-decoration: underline;
     margin: 30px;
-    padding: 5px;
+    padding: 10px;
+    font-size: 1.5rem;
 }
 
 #heading-div {
     background-color: #2a2a2a;
-    width: 200px;
+    width: 100vw;
     height: 50px;
     margin: auto;
     border-radius: 5px;
@@ -32,19 +33,17 @@ body {
     margin: auto;
     border-radius: 5px;
     box-shadow: 3px 3px 3px black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .cards-div h2 {
     padding: 10px;
+    font-size: 1.25rem;
 }
 
-#dealers-cards img {
-    max-width: 115px;
-    max-height: 230px;
-    margin: 10px;
-}
-
-#players-cards img {
+img {
     max-width: 115px;
     max-height: 230px;
     margin: 10px;
@@ -73,6 +72,7 @@ body {
 
 h1, h2 {
     color: white;
+    font-size: ;
 }
 
 @media screen and (min-width: 768px) {
@@ -87,16 +87,11 @@ h1, h2 {
     .cards-div h2 {
         font-size: 2.5rem;
     }
-
     #heading {
         padding-top: 20px;
         font-size: 3rem;
     }
-    #dealers-cards img {
-        max-width: 140px;
-        max-height: 280px;
-    }
-    #players-cards img {
+    img {
         max-width: 140px;
         max-height: 280px;
     }
@@ -130,7 +125,7 @@ h1, h2 {
     .cards-div h2 {
         font-size: 3.25rem;
     }
-    #dealers-cards img {
+    img {
         width: 210px;
         height: 300px;
     }
