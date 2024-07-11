@@ -86,7 +86,8 @@ function hit() {
 function stand() {
   canHit = false;
 
-  if(dealersTotal < 17) {
+  // Draw cards to dealer after player stands
+  while(dealersTotal < 17) {
       let image = document.createElement("img");
       let card = deck.pop();
       image.src = "assets/cards/" + card + ".png";
@@ -95,7 +96,6 @@ function stand() {
       dealersAceCount += checkForAce(card);
   }
 
-  // Account for aces
   playersTotal = reduceAce(playersTotal, playersAceCount);
   dealersTotal = reduceAce(dealersTotal, dealersAceCount);
   
@@ -129,7 +129,7 @@ function stand() {
   document.getElementById("win-or-lose").innerHTML = popup;
 }
 
-// Function for players and dealers ace count
+// Function for counting players and dealers aces
 function checkForAce(card) {
   if (card[0] === "a") {
     return 1;
@@ -137,7 +137,6 @@ function checkForAce(card) {
     return 0;
   }
 }
-// checkForAce(card);
 
 // Function to reduce ace from 11 to 1 if greater than 21
 function reduceAce(playersTotal, playersAceCount) {
@@ -148,15 +147,12 @@ function reduceAce(playersTotal, playersAceCount) {
   return playersTotal;
 }
 
-// New Game
 function newGame() {
   createDeck();
   shuffleDeck();
   hiddenCard = deck.pop();
   dealersTotal += getValue(hiddenCard);
   dealersAceCount += checkForAce(hiddenCard);
-  //   console.log(hiddenCard);
-  //   console.log(dealersTotal);
 
   // Deal cards to the dealer
     for (let x = 0; x < 1; x++) {
@@ -167,7 +163,6 @@ function newGame() {
       dealersTotal += getValue(card);
       dealersAceCount += checkForAce(card);
     }
-  // console.log(dealersTotal);
 
   // Deal cards to the player
   for (let x = 0; x < 2; x++) {
@@ -178,9 +173,7 @@ function newGame() {
     playersTotal += getValue(card);
     playersAceCount += checkForAce(card);
   }
-  // console.log(playersTotal);
 
-  // Account for aces
   playersTotal = reduceAce(playersTotal, playersAceCount);
   dealersTotal = reduceAce(dealersTotal, dealersAceCount);
 
@@ -196,5 +189,3 @@ function newGame() {
 }
 newGame();
 
-// console.log(dealersTotal);
-// console.log(playersTotal);
