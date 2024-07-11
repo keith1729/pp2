@@ -1,6 +1,5 @@
 // Global Variables
 let deck = createDeck();
-let card = "";
 let hiddenCard;
 let playersTotal = 0;
 let dealersTotal = 0;
@@ -77,19 +76,17 @@ function hit() {
   }
   // Account for ace values when drawing a card
   playersTotal = reduceAce(playersTotal, playersAceCount);
-  // Display the players total score
+  // Display the players updated total score
   document.getElementById(
     "players-total"
   ).innerHTML = `Player  ${playersTotal}`;
-
-  // console.log(playersTotal);
 }
 
 // Stand function to stop drawing cards and determine winner
 function stand() {
   canHit = false;
 
-  while (dealersTotal < 17) {
+  if(dealersTotal < 17) {
       let image = document.createElement("img");
       let card = deck.pop();
       image.src = "assets/cards/" + card + ".png";
@@ -111,9 +108,9 @@ function stand() {
   if (playersTotal > 21) {
     popup = "Ouch.. You Lose!";
   } else if (dealersTotal > 21) {
-    popup = "Yay! You Win!";
+    popup = "Woohoo! You Win!";
   } else if (playersTotal > dealersTotal) {
-    popup = "Yay! You Win!";
+    popup = "Woohoo! You Win!";
   } else if (playersTotal === dealersTotal) {
     popup = "It's a Tie!";
   } else {
@@ -192,10 +189,7 @@ function newGame() {
   // Allow player to use the "STAND" button
   document.getElementById("stand-button").addEventListener("click", stand);
 
-  // Display the players and dealers total score
-  document.getElementById(
-    "dealers-total"
-  ).innerHTML = `Dealer  ${dealersTotal}`;
+  // Display the players total score
   document.getElementById(
     "players-total"
   ).innerHTML = `Player  ${playersTotal}`;
