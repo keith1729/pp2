@@ -63,6 +63,26 @@ function getValue(card) {
 }
 // getValue(card);
 
+// Hit function to give another card to the player
+function hit() {
+    if(canHit) {
+        let image = document.createElement("img");
+    let card = deck.pop();
+    image.src = "assets/cards/" + card + ".png";
+    document.getElementById("players-cards").append(image);
+    playersTotal += getValue(card);
+    playersAceCount += checkForAce(card);
+    } else {
+        return;
+    }
+    // Stop being able to draw another card once players score is greater than 21
+    if(reduceAce(playersTotal, playersAceCount) >= 21) {
+        canHit = false;
+    }
+}
+// hit();
+
+// Function for players and dealers ace count 
 function checkForAce(card) {
   if (card[0] === "a") {
     return 1;
@@ -71,6 +91,15 @@ function checkForAce(card) {
   }
 }
 // checkForAce(card);
+
+// Function to reduce ace from 11 to 1 if greater than 21
+function reduceAce(playersTotal, playersAceCount) {
+    while(playersTotal > 21 && playersAceCount > 0) {
+        playersTotal -= 10;
+        playersAceCount -= 1;
+    }
+    return playersTotal;
+} 
 
 // New Game
 function newGame() {
@@ -108,16 +137,4 @@ function newGame() {
 }
 newGame();
 
-// Hit function
-function hit() {
-    if(canHit) {
-        let image = document.createElement("img");
-    let card = deck.pop();
-    image.src = "assets/cards/" + card + ".png";
-    document.getElementById("players-cards").append(image);
-    playersTotal += getValue(card);
-    playersAceCount += checkForAce(card);
-    } else {
-        return;
-    }
-}
+
