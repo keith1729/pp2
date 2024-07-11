@@ -86,9 +86,9 @@ function newGame() {
     let image = document.createElement("img");
     let card = deck.pop();
     image.src = "assets/cards/" + card + ".png";
+    document.getElementById("dealers-cards").append(image);
     dealersTotal += getValue(card);
     dealersAceCount += checkForAce(card);
-    document.getElementById("dealers-cards").append(image);
   }
   console.log(dealersTotal);
   
@@ -97,10 +97,27 @@ function newGame() {
     let image = document.createElement("img");
     let card = deck.pop();
     image.src = "assets/cards/" + card + ".png";
+    document.getElementById("players-cards").append(image);
     playersTotal += getValue(card);
     playersAceCount += checkForAce(card);
-    document.getElementById("players-cards").append(image);
   }
   console.log(playersTotal);
+
+  // Allow player to use the "HIT" button
+  document.getElementById("hit-button").addEventListener("click", hit)
 }
 newGame();
+
+// Hit function
+function hit() {
+    if(canHit) {
+        let image = document.createElement("img");
+    let card = deck.pop();
+    image.src = "assets/cards/" + card + ".png";
+    document.getElementById("players-cards").append(image);
+    playersTotal += getValue(card);
+    playersAceCount += checkForAce(card);
+    } else {
+        return;
+    }
+}
