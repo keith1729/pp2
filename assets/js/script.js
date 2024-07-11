@@ -34,7 +34,6 @@ function createDeck() {
   }
   return deck;
 }
-//   console.log(deck);
 
 // Shuffle the deck
 function shuffleDeck() {
@@ -43,8 +42,6 @@ function shuffleDeck() {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 }
-// shuffleDeck();
-// console.log(deck);
 
 // Calculate card values
 function getValue(card) {
@@ -61,7 +58,6 @@ function getValue(card) {
     return parseInt(value);
   }
 }
-// getValue(card);
 
 // Hit function to draw another card to the player
 function hit() {
@@ -80,9 +76,8 @@ function hit() {
         canHit = false;
     }
 }
-// hit();
 
-// Stand function to stop drawing cards and pass turn to the dealer
+// Stand function to stop drawing cards, pass turn to the dealer and determine winner
 function stand() {
     canHit = false;
     playersTotal = reduceAce(playersTotal, playersAceCount);
@@ -166,6 +161,9 @@ function newGame() {
   document.getElementById("hit-button").addEventListener("click", hit);
   // Allow player to use the "STAND" button
   document.getElementById("stand-button").addEventListener("click", stand);
+
+  document.getElementById("dealers-total").innerHTML = `Dealer  ${dealersTotal}`;
+  document.getElementById("players-total").innerHTML = `Player  ${playersTotal}`;
 }
 newGame();
 

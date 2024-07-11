@@ -28,6 +28,11 @@ body {
     
 }
 
+#win-or-lose {
+    color: black;
+    font-size: 1.2rem;
+}
+
 h2 {
     color: white;
     font-size: 1.4rem;
@@ -56,94 +61,122 @@ img {
 #hit-button {
     height: 40px;
     width: 120px;
-    margin: 14px;
-    font-size: 1.25rem;
+    margin: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px black;
 }
 
 #stand-button {
     height: 40px;
     width: 120px;
-    margin: 14px;
-    font-size: 1.25rem;
+    margin: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px black;
 }
 
 #new-game-button {
     height: 40px;
     width: 120px;
-    margin: 14px;
-    font-size: 1.25rem;
+    margin: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px black;
 }
 
 @media screen and (min-width: 768px) {
-    #heading-div {
-        height: 75px;
-        width: 80vw;
-    }
     #heading {
         font-size: 2rem;
         padding: 15px 0 10px 0;
         margin: 40px;
     }
-    .cards-div {
+    #heading-div {
+        height: 75px;
         width: 80vw;
+    }
+    #win-or-lose {
+        font-size: 1.4rem;
     }
     h2 {
         font-size: 1.8rem;
         padding: 10px;
     }
+    .cards-div {
+        width: 80vw;
+    }
     img {
         height: 180px;
         width: 120px;
         padding: 5px;
     }
-    .stand-button {
+    #hit-button {
         height: 40px;
         width: 120px;
-        font-size: 1.8rem;
-        margin: 40px;
-    } 
-    .hit-button {
+        font-size: 1.6rem;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px black;
+    }
+    #stand-button {
         height: 40px;
         width: 120px;
-        font-size: 1.8rem;
-        margin: 40px;
+        font-size: 1.6rem;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px black;
     }
     #new-game-button {
         height: 40px;
         width: 120px;
         font-size: 1.2rem;
-        margin: 20px;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px black;
     } 
 }
 
 @media screen and (min-width: 1024px) {
-    #heading-div {
-        height: 75px;
-        width: 80vw;
-    }
     #heading {
-        font-size: 2rem;
+        font-size: 2.5rem;
         padding: 15px 0 10px 0;
         margin: 40px;
     }
-    .cards-div {
-        width: 650px;
-        height: 425px;
+    #heading-div {
+        height: 75px;
+        width: 75vw;
     }
-    .cards-div h2 {
-        font-size: 3.25rem;
+    #win-or-lose {
+        font-size: 1.6rem;
+    }
+    h2 {
+        font-size: 2rem;
+        padding: 10px;
+    }
+    .cards-div {
+        width: 75vw;
     }
     img {
         height: 180px;
         width: 120px;
         padding: 5px;
     }
-    .stand-button {
-        margin-top: 30px;
-        width: 220px;
+    #hit-button {
+        height: 50px;
+        width: 120px;
+        font-size: 1.6rem;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px black;
     }
-    .hit-button {
-        margin-top: 30px;
-        width: 220px;
+    #stand-button {
+        height: 50px;
+        width: 120px;
+        font-size: 1.6rem;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px black;
     }
+    #new-game-button {
+        height: 50px;
+        width: 120px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px black;
+    } 
 }
