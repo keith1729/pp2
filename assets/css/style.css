@@ -11,112 +11,120 @@ body {
 }
 
 #heading {
-    text-decoration: underline;
-    margin: 30px;
-    padding: 10px;
+    color: white;
     font-size: 1.5rem;
+    text-decoration: underline;
+    padding: 10px;
+    margin: 30px;
 }
 
 #heading-div {
     background-color: #2a2a2a;
-    width: 100vw;
     height: 50px;
+    width: 95vw;
     margin: auto;
     border-radius: 5px;
     box-shadow: 3px 3px 3px black;
     
 }
 
+h2 {
+    color: white;
+    font-size: 1.4rem;
+    padding: 10px;
+}
+
 .cards-div {
     background-color: #2a2a2a;
-    width: 300px;
+    width: 95vw;
     margin: auto;
     border-radius: 5px;
     box-shadow: 3px 3px 3px black;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.cards-div h2 {
-    padding: 10px;
-    font-size: 1.25rem;
+    
 }
 
 img {
-    max-width: 115px;
-    max-height: 230px;
-    margin: 10px;
+    height: 160px;
+    width: 110px;
+    margin: 5px;
 }
 
 #hit-button {
-    width: 120px;
     height: 40px;
-    font-size: 1.25rem;
+    width: 120px;
     margin: 14px;
+    font-size: 1.25rem;
 }
 
 #stand-button {
-    width: 120px;
     height: 40px;
-    font-size: 1.25rem;
+    width: 120px;
     margin: 14px;
+    font-size: 1.25rem;
 }
 
 #new-game-button {
-    width: 120px;
     height: 40px;
-    font-size: 1.25rem;
+    width: 120px;
     margin: 14px;
-}
-
-h1, h2 {
-    color: white;
-    font-size: ;
+    font-size: 1.25rem;
 }
 
 @media screen and (min-width: 768px) {
     #heading-div {
-        width: 500px;
-        height: 100px;
-    }
-    .cards-div {
-        width: 500px;
-        height: 300px;
-    }
-    .cards-div h2 {
-        font-size: 2.5rem;
+        height: 75px;
+        width: 80vw;
     }
     #heading {
-        padding-top: 20px;
-        font-size: 3rem;
+        font-size: 2rem;
+        padding: 15px 0 10px 0;
+        margin: 40px;
+    }
+    .cards-div {
+        width: 80vw;
+    }
+    h2 {
+        font-size: 1.8rem;
+        padding: 10px;
     }
     img {
-        max-width: 140px;
-        max-height: 280px;
+        height: 180px;
+        width: 120px;
+        padding: 5px;
     }
     .stand-button {
-        width: 160px;
-        height: 80px;
-        font-size: 1.75rem;
-        margin: 20px;
+        height: 40px;
+        width: 120px;
+        font-size: 1.8rem;
+        margin: 40px;
     } 
     .hit-button {
-        width: 160px;
-        height: 80px;
-        font-size: 1.75rem;
+        height: 40px;
+        width: 120px;
+        font-size: 1.8rem;
+        margin: 40px;
+    }
+    #new-game-button {
+        height: 40px;
+        width: 120px;
+        font-size: 1.2rem;
         margin: 20px;
     } 
 }
 
 @media screen and (min-width: 1024px) {
     #heading-div {
-        width: 650px;
-        height: 125px;
+        height: 75px;
+        width: 80vw;
     }
     #heading {
-        padding-top: 25px;
-        font-size: 4rem;
+        font-size: 2rem;
+        padding: 15px 0 10px 0;
+        margin: 40px;
     }
     .cards-div {
         width: 650px;
@@ -126,8 +134,9 @@ h1, h2 {
         font-size: 3.25rem;
     }
     img {
-        width: 210px;
-        height: 300px;
+        height: 180px;
+        width: 120px;
+        padding: 5px;
     }
     .stand-button {
         margin-top: 30px;

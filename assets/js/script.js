@@ -91,7 +91,7 @@ function stand() {
 
     // Determining the winner
     let popup = "";
-    if(playersAceCount > 21) {
+    if(playersTotal > 21) {
         popup = "Ouch.. You Lose!"
     } else if(dealersTotal > 21) {
         popup = "Yay! You Win!"
