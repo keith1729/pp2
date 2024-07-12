@@ -70,14 +70,17 @@ function hit() {
   } else {
     return;
   }
+
   // Stop being able to draw another card once players score is greater than 21
   if(reduceAce(playersTotal, playersAceCount) >= 21) {
     canHit = false;
     stand();
   } 
+
   // Account for ace values when drawing a card
   playersTotal = reduceAce(playersTotal, playersAceCount);
-  // Display the players updated total score
+
+  // Display the players total score
   document.getElementById(
     "players-total"
   ).innerHTML = `Player ~  ${playersTotal}`;
@@ -155,9 +158,8 @@ function reduceAce(playersTotal, playersAceCount) {
   return playersTotal;
 }
 
-// Allow player to use the "HIT" button
+// Allow player to use the hit and stand buttons
 document.getElementById("hit-button").addEventListener("click", hit);
-// Allow player to use the "STAND" button
 document.getElementById("stand-button").addEventListener("click", stand);
 
 function newGame() {
