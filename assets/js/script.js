@@ -60,7 +60,7 @@ function getValue(card) {
 
 // Hit function to draw another card to the player
 function hit() {
-  if (canHit) {
+  if(canHit) {
     let image = document.createElement("img");
     let card = deck.pop();
     image.src = "assets/cards/" + card + ".png";
@@ -71,9 +71,10 @@ function hit() {
     return;
   }
   // Stop being able to draw another card once players score is greater than 21
-  if (reduceAce(playersTotal, playersAceCount) >= 21) {
+  if(reduceAce(playersTotal, playersAceCount) >= 21) {
     canHit = false;
-  }
+    stand();
+  } 
   // Account for ace values when drawing a card
   playersTotal = reduceAce(playersTotal, playersAceCount);
   // Display the players updated total score
@@ -86,7 +87,11 @@ function hit() {
 function stand() {
   canHit = false;
 
-  // Draw cards to dealer after player stands
+  // Flip the hidden card
+  document.getElementById("hidden-card").src =
+    "assets/cards/" + hiddenCard + ".png";
+
+  // Draw cards to dealer
   while (dealersTotal < 17) {
     let image = document.createElement("img");
     let card = deck.pop();
@@ -98,10 +103,6 @@ function stand() {
 
   playersTotal = reduceAce(playersTotal, playersAceCount);
   dealersTotal = reduceAce(dealersTotal, dealersAceCount);
-
-  // Flip the hidden card
-  document.getElementById("hidden-card").src =
-    "assets/cards/" + hiddenCard + ".png";
 
   // Determining the winner
   let popup = "";
@@ -119,24 +120,24 @@ function stand() {
     document.getElementById("dealer-cards-div").style.backgroundColor = "darkred";
   } else if (playersTotal === dealersTotal) {
     popup = "It's a Tie!";
+    document.getElementById("player-cards-div").style.backgroundColor = "darkblue";
+    document.getElementById("dealer-cards-div").style.backgroundColor = "darkblue";
   } else {
     popup = "Ouch.. You Lose!";
     document.getElementById("player-cards-div").style.backgroundColor = "darkred";
     document.getElementById("dealer-cards-div").style.backgroundColor = "darkgreen";
   }
 
-  // Display the result on screen
-  document.getElementById("win-or-lose").innerHTML = popup;
-
-  // Display the players and dealers total score
+  // Display the dealers total score
   document.getElementById(
     "dealers-total"
   ).innerHTML = `Dealer ~  ${dealersTotal}`;
-  document.getElementById(
-    "players-total"
-  ).innerHTML = `Player ~  ${playersTotal}`;
+
+  // Display the result on screen
+  document.getElementById("win-or-lose").innerHTML = popup;
 }
-// Function for counting players and dealers aces
+
+// Function for counting aces
 function checkForAce(card) {
   if (card[0] === "a") {
     return 1;
@@ -144,6 +145,7 @@ function checkForAce(card) {
     return 0;
   }
 }
+
 // Function to reduce ace from 11 to 1 if greater than 21
 function reduceAce(playersTotal, playersAceCount) {
   while (playersTotal > 21 && playersAceCount > 0) {
@@ -157,16 +159,6 @@ function reduceAce(playersTotal, playersAceCount) {
 document.getElementById("hit-button").addEventListener("click", hit);
 // Allow player to use the "STAND" button
 document.getElementById("stand-button").addEventListener("click", stand);
-
-// Keeping the score of games won
-function winScore() {
-  let wScore = parseInt(document.getElementById("win").innerHTML);
-  document.getElementById("win").innerHTML = ++wScore;
-}
-function loseScore() {
-  let lscore = parseInt(document.getElementById("lose").innerHTML);
-  document.getElementById("lose").innerHTML = ++lscore;
-}
 
 function newGame() {
   createDeck();
