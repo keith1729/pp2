@@ -79,7 +79,7 @@ function hit() {
   // Display the players updated total score
   document.getElementById(
     "players-total"
-  ).innerHTML = `Player  ${playersTotal}`;
+  ).innerHTML = `Player ~  ${playersTotal}`;
 }
 
 // Stand function to stop drawing cards and determine winner
@@ -87,18 +87,18 @@ function stand() {
   canHit = false;
 
   // Draw cards to dealer after player stands
-  while(dealersTotal < 17) {
-      let image = document.createElement("img");
-      let card = deck.pop();
-      image.src = "assets/cards/" + card + ".png";
-      document.getElementById("dealers-cards").append(image);
-      dealersTotal += getValue(card);
-      dealersAceCount += checkForAce(card);
+  while (dealersTotal < 17) {
+    let image = document.createElement("img");
+    let card = deck.pop();
+    image.src = "assets/cards/" + card + ".png";
+    document.getElementById("dealers-cards").append(image);
+    dealersTotal += getValue(card);
+    dealersAceCount += checkForAce(card);
   }
 
   playersTotal = reduceAce(playersTotal, playersAceCount);
   dealersTotal = reduceAce(dealersTotal, dealersAceCount);
-  
+
   // Flip the hidden card
   document.getElementById("hidden-card").src =
     "assets/cards/" + hiddenCard + ".png";
@@ -107,28 +107,35 @@ function stand() {
   let popup = "";
   if (playersTotal > 21) {
     popup = "Ouch.. You Lose!";
+    document.getElementById("player-cards-div").style.backgroundColor = "darkred";
+    document.getElementById("dealer-cards-div").style.backgroundColor = "darkgreen";
   } else if (dealersTotal > 21) {
     popup = "Woohoo! You Win!";
+    document.getElementById("player-cards-div").style.backgroundColor = "darkgreen";
+    document.getElementById("dealer-cards-div").style.backgroundColor = "darkred";
   } else if (playersTotal > dealersTotal) {
     popup = "Woohoo! You Win!";
+    document.getElementById("player-cards-div").style.backgroundColor = "darkgreen";
+    document.getElementById("dealer-cards-div").style.backgroundColor = "darkred";
   } else if (playersTotal === dealersTotal) {
     popup = "It's a Tie!";
   } else {
     popup = "Ouch.. You Lose!";
+    document.getElementById("player-cards-div").style.backgroundColor = "darkred";
+    document.getElementById("dealer-cards-div").style.backgroundColor = "darkgreen";
   }
+
+  // Display the result on screen
+  document.getElementById("win-or-lose").innerHTML = popup;
 
   // Display the players and dealers total score
   document.getElementById(
     "dealers-total"
-  ).innerHTML = `Dealer  ${dealersTotal}`;
+  ).innerHTML = `Dealer ~  ${dealersTotal}`;
   document.getElementById(
     "players-total"
-  ).innerHTML = `Player  ${playersTotal}`;
-
-  // Display the result on screen
-  document.getElementById("win-or-lose").innerHTML = popup;
+  ).innerHTML = `Player ~  ${playersTotal}`;
 }
-
 // Function for counting players and dealers aces
 function checkForAce(card) {
   if (card[0] === "a") {
@@ -137,7 +144,6 @@ function checkForAce(card) {
     return 0;
   }
 }
-
 // Function to reduce ace from 11 to 1 if greater than 21
 function reduceAce(playersTotal, playersAceCount) {
   while (playersTotal > 21 && playersAceCount > 0) {
@@ -145,6 +151,21 @@ function reduceAce(playersTotal, playersAceCount) {
     playersAceCount -= 1;
   }
   return playersTotal;
+}
+
+// Allow player to use the "HIT" button
+document.getElementById("hit-button").addEventListener("click", hit);
+// Allow player to use the "STAND" button
+document.getElementById("stand-button").addEventListener("click", stand);
+
+// Keeping the score of games won
+function winScore() {
+  let wScore = parseInt(document.getElementById("win").innerHTML);
+  document.getElementById("win").innerHTML = ++wScore;
+}
+function loseScore() {
+  let lscore = parseInt(document.getElementById("lose").innerHTML);
+  document.getElementById("lose").innerHTML = ++lscore;
 }
 
 function newGame() {
@@ -155,14 +176,14 @@ function newGame() {
   dealersAceCount += checkForAce(hiddenCard);
 
   // Deal cards to the dealer
-    for (let x = 0; x < 1; x++) {
-      let image = document.createElement("img");
-      let card = deck.pop();
-      image.src = "assets/cards/" + card + ".png";
-      document.getElementById("dealers-cards").append(image);
-      dealersTotal += getValue(card);
-      dealersAceCount += checkForAce(card);
-    }
+  for (let x = 0; x < 1; x++) {
+    let image = document.createElement("img");
+    let card = deck.pop();
+    image.src = "assets/cards/" + card + ".png";
+    document.getElementById("dealers-cards").append(image);
+    dealersTotal += getValue(card);
+    dealersAceCount += checkForAce(card);
+  }
 
   // Deal cards to the player
   for (let x = 0; x < 2; x++) {
@@ -174,18 +195,9 @@ function newGame() {
     playersAceCount += checkForAce(card);
   }
 
-  playersTotal = reduceAce(playersTotal, playersAceCount);
-  dealersTotal = reduceAce(dealersTotal, dealersAceCount);
-
-  // Allow player to use the "HIT" button
-  document.getElementById("hit-button").addEventListener("click", hit);
-  // Allow player to use the "STAND" button
-  document.getElementById("stand-button").addEventListener("click", stand);
-
   // Display the players total score
   document.getElementById(
     "players-total"
-  ).innerHTML = `Player  ${playersTotal}`;
+  ).innerHTML = `Player ~  ${playersTotal}`;
 }
 newGame();
-

@@ -16,15 +16,17 @@
 
 <body>
     <!-- Heading -->
-    <div id="heading-div">
-        <h1 id="heading">Blackjack</h1>
-    </div>
+    <a href="index.html">
+        <div id="heading-div">
+            <h1 id="heading">Blackjack</h1>
+        </div>
+    </a>
     <br>
     <p id="win-or-lose"></p>
     <br>
     <!-- Dealers Cards -->
-    <div class="cards-div">
-        <h2 id="dealers-total">Dealer</h2>
+    <div id="dealer-cards-div">
+        <h2 id="dealers-total">Dealer ~</h2>
         <div id="dealers-cards">
             <img id="hidden-card" src="assets/cards/back.png" alt="hidden card">
 
@@ -32,8 +34,8 @@
     </div>
     <br>
     <!-- Players Cards -->
-    <div class="cards-div">
-        <h2 id="players-total">Player</h2>
+    <div id="player-cards-div">
+        <h2 id="players-total"></h2>
         <div id="players-cards">
 
         </div>
@@ -43,10 +45,15 @@
     <button id="hit-button">HIT</button>
     <button id="stand-button">STAND</button>
     <br>
-    <!-- New Game Button -->
-    <div>
-        <button id="new-game-button">New Game</button>
+    <!-- Score section -->
+    <div id="score-section">
+        <p id="win-total">Win ~ <span id="win">0</span></p>
+        <p id="lose-total">Lose ~ <span id="lose">0</span></p>
     </div>
+    <!-- New Game Button -->
+    <!-- <div>
+        <button id="new-game-button">New Game</button>
+    </div> -->
     <script src="assets/js/script.js"></script>
 </body>
 

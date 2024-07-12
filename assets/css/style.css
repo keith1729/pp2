@@ -27,19 +27,18 @@ body {
     box-shadow: 3px 3px 3px black;
     
 }
-/* Styling for the win/lose popup message */
+/* Win or lose popup message */
 #win-or-lose {
     color: black;
     font-size: 1.2rem;
 }
-/* Styling for all h2 headings */
+/* All h2 headings */
 h2 {
     color: white;
     font-size: 1.4rem;
     padding: 10px;
 }
-
-.cards-div {
+#dealer-cards-div {
     background-color: #2a2a2a;
     width: 95vw;
     margin: auto;
@@ -49,9 +48,19 @@ h2 {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    
 }
-/* Styling for all card images */
+#player-cards-div {
+    background-color: #2a2a2a;
+    width: 95vw;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* All card images */
 img {
     height: 160px;
     width: 110px;
@@ -74,13 +83,13 @@ img {
     border-radius: 5px;
     box-shadow: 3px 3px 3px black;
 }
-#new-game-button {
+/* Wins and losses section */
+#score-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     height: 40px;
-    width: 120px;
-    margin: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px black;
+    font-size: 1.2rem;
 }
 /* Media query: tablets (768px and up) */
 @media screen and (min-width: 768px) {
@@ -93,25 +102,28 @@ img {
         height: 75px;
         width: 80vw;
     }
-    /* Styling for the win/lose popup message */
+    /* Win or lose popup message */
     #win-or-lose {
         font-size: 1.4rem;
     }
-    /* Styling for all h2 headings */
+    /* All h2 headings */
     h2 {
         font-size: 1.8rem;
         padding: 10px;
     }
-    .cards-div {
+    #dealer-cards-div {
         width: 80vw;
     }
-    /* Styling for all card images */
+    #player-cards-div {
+        width: 80vw;
+    }
+    /* All card images */
     img {
         height: 180px;
         width: 120px;
         padding: 5px;
     }
-    /* Styling for buttons */
+    /* Hit and stand buttons */
     #hit-button {
         height: 40px;
         width: 120px;
@@ -126,13 +138,15 @@ img {
         border-radius: 5px;
         box-shadow: 3px 3px 3px black;
     }
-    #new-game-button {
+    /* Wins and losses section */
+    #score-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
         height: 40px;
-        width: 120px;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        box-shadow: 3px 3px 3px black;
-    } 
+        padding: 10px 200px;
+        font-size: 1.3rem;
+    }
 }
 /* Media query: laptops (1024px and up) */
 @media screen and (min-width: 1024px) {
@@ -145,25 +159,28 @@ img {
         height: 75px;
         width: 75vw;
     }
-    /* Styling for the win/lose popup message */
+    /* Win or lose popup message */
     #win-or-lose {
         font-size: 1.6rem;
     }
-    /* Styling for all h2 headings */
+    /* All h2 headings */
     h2 {
         font-size: 2rem;
         padding: 10px;
     }
-    .cards-div {
+    #dealer-cards-div {
         width: 75vw;
     }
-    /* Styling for all card images */
+    #player-cards-div {
+        width: 75vw;
+    }
+    /* All card images */
     img {
         height: 180px;
         width: 120px;
         padding: 5px;
     }
-    /* Styling for buttons */
+    /* Hit and stand buttons */
     #hit-button {
         height: 50px;
         width: 120px;
@@ -178,11 +195,13 @@ img {
         border-radius: 5px;
         box-shadow: 3px 3px 3px black;
     }
-    #new-game-button {
-        height: 50px;
-        width: 120px;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        box-shadow: 3px 3px 3px black;
-    } 
+    /* Wins and losses section */
+    #score-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 40px;
+        padding: 10px 350px;
+        font-size: 1.4rem;
+    }
 }
