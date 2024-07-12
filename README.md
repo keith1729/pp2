@@ -55,7 +55,11 @@ For this website the font Piazzolla was used for its angular look and feel. The 
 
 #### Colors
 
-The colors used in this website are basic at first but as the user plays the game colors flash to indicate the winner and loser of each blackjack hand. If the player wins a hand the players div surrounding the cards will turn green, and it will turn red if the player loses the hand. The same is true for the dealer and if it's a tie both divs surrounding both sets of cards turn blue.
+The colors used in this website are basic at first but as the user plays the game colors flash to indicate the winner and loser of each blackjack hand. If the player wins a hand the players div surrounding the cards will turn green, and it will turn red if the player loses the hand. The same is true for the dealer and if it's a tie both divs surrounding both sets of cards turn blue. The colors were tested for contrast with Coolors and showed no issues.
+
+<div align="center">
+    <img src="assets/images/coolors.png" alt="Coolors">
+</div>
 
 <div align="center">
     <img src="assets/images/standard_colors.png" alt="Standard colors">
@@ -107,3 +111,41 @@ When the player presses the hit button another card is drawn to the players hand
 
 - HTML - HyperText Markup Language was the language used to create the structure of the website and all the elements which contain all the features of this blackjack game.
 
+- CSS - Cascading Style Sheets was used to apply the styling of the website.
+
+- Javascript - This is a dynamic programming language that's used for web development, in web applications, for game development, and lots more. It allows you to implement dynamic features on web pages that cannot be done with only HTML and CSS. For this website this is the language I mostly focused on. Javascript was used to create event listeners to implement functions when the player presses a button in the game, it was used to create the features in the game and also to do the logic of the game.
+
+## Testing
+
+- HTML has been validated by W3C Markup Validation Service.
+When testing the html code through the w3c markup validation service, it gave a warning saying there was an empty heading. This was investigated and deemed to be fine as javascript was used to populate the heading.
+
+<div align="center">
+    <img src="assets/images/html_validate.png" alt="HTML validate">
+</div>
+
+- CSS was validated using the W3C validation service and showed no errors found.
+
+<div align="center">
+    <img src="assets/images/css_validate.png" alt="CSS validate">
+</div>
+
+- Javascript was validated with JSHint and returned no errors in the code.
+
+<div align="center">
+    <img src="assets/images/jshint.png" alt="Javascript validate">
+</div>
+
+This website was tested extensively on mobiles, laptops and desktops, also across different browsers such as Chrome, Firefox and Edge. I shared the URL with family who use Apple Iphones and no problems were noted. The game was tested extensively to make sure there were no bugs existing and the code ran through. All the features were tested on the live site.
+
+## Deployment
+
+- The website was deployed on Github pages were I set the root to Main and saved these settings. 
+
+## Credits
+
+- My mentors for advising me on all aspects from code to deployment.
+- Various tutorials on Youtube.
+- The Code Institute Love Maths walkthrough project.
+- Github for version control.
+- ChatGPT for dissecting functions to gain better knowledge of Javascript.
